@@ -10,4 +10,10 @@ public class Produto {
 		this.preco = preco;
 		this.qtdEstoque = qtdEstoque;
 	}
-}
+
+	public String toString() {
+		String toString = String.format("Preço: %d\n", preco);
+		return toString;
+	}
+} 
+ 

@@ -83,6 +83,7 @@ public class Main {
                     System.out.println("Opção de menu inválida!");
                     break;
             }
+            input.close();
         } while (menu != 3);
     }
 }

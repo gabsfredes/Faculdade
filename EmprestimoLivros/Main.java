@@ -7,10 +7,10 @@ public class Main {
         int op;
         do {
             System.out.println("\n--- Menu ---");
-            System.out.println("1 - Novo Emprestimo");
-            System.out.println("4 - Imprimir emprestimos atuais");
-            System.out.println("5 - Sair do program\n");
-            System.out.print("Escolhe uma opcao: ");
+            System.out.println("1 - Novo empréstimo");
+            System.out.println("4 - Imprimir empréstimos atuais");
+            System.out.println("5 - Sair do programa\n");
+            System.out.print("Escolhe uma opção: ");
             op = input.nextInt();
         } while (op < 1 || op > 5);
         input.nextLine(); // limpa o buffer
@@ -19,7 +19,7 @@ public class Main {
 
     public static Emprestimo novoEmprestimo(Scanner input) {
         Emprestimo E;
-        System.out.println("\n--- Informe a data do emprestimo ---");
+        System.out.println("\n--- Informe a data do empréstimo ---");
         System.out.print("Dia: ");
         int dia = input.nextInt();
         System.out.print("Mes: ");
@@ -29,7 +29,7 @@ public class Main {
 
         input.nextLine(); // limpa o buffer
 
-        System.out.println("--- Pessoa do Emprestimo ---");
+        System.out.println("--- Pessoa do Empréstimo ---");
         System.out.print("Digite o nome da Pessoa: ");
         String nome = input.nextLine();
         System.out.print("Digite o Email da Pessoa: ");
@@ -40,7 +40,7 @@ public class Main {
         int maisLivro = 1;
 
         do {
-        System.out.println("--- Livro do emprestimo ---");
+        System.out.println("--- Livro do Empréstimo ---");
         System.out.print("Nome do livro: ");
         String titulo = input.nextLine();
         System.out.print("Autor do livro: ");
@@ -79,7 +79,7 @@ public class Main {
                     System.out.println("O programa esta enceranddo...\n...\n...\nEncerrado!\n");
                     break;
                 default:
-                    System.out.println("Opcao invalida");
+                    System.out.println("Opção inválida");
                     break;
             }
         } while (op != 5);

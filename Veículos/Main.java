@@ -1,3 +1,4 @@
+
 /*
  * Gabriel Fredes
  * Exercício sobre herança
@@ -55,7 +56,8 @@ public class Main {
                         System.out.print("Qual a distância entre o solo e o veículo (Em cm)? ");
                         int distancia = input.nextInt();
 
-                        OffRoad veiculoOffRoad = new OffRoad(passageiros, galoes, milhas, distancia, "Veículo Off-Road");
+                        OffRoad veiculoOffRoad = new OffRoad(passageiros, galoes, milhas, distancia,
+                                "Veículo Off-Road");
                         veiculos.add(veiculoOffRoad);
                     } else if (tipo == 3) {
                         System.out.print("Quantos passageiros o veículo de passeio suporta? ");

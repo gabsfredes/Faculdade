@@ -30,7 +30,6 @@ public class Main {
                     System.out.print("\n\nInforme o tipo de veículo: \n");
                     System.out.println("1 - Caminhão");
                     System.out.println("2 - Veículo Off-Road");
-                    System.out.println("3 - Veículo de passeio");
                     System.out.print("Digite a opção desejada: ");
                     int tipo = input.nextInt();
 
@@ -59,16 +58,6 @@ public class Main {
                         OffRoad veiculoOffRoad = new OffRoad(passageiros, galoes, milhas, distancia,
                                 "Veículo Off-Road");
                         veiculos.add(veiculoOffRoad);
-                    } else if (tipo == 3) {
-                        System.out.print("Quantos passageiros o veículo de passeio suporta? ");
-                        int passageiros = input.nextInt();
-                        System.out.print("Quantos galões de gasolina o veículo de passeio suporta? ");
-                        int galoes = input.nextInt();
-                        System.out.print("Quantos km o veículo de passeio faz por galão? ");
-                        int milhas = input.nextInt();
-
-                        Vehicle passeio = new Vehicle(passageiros, galoes, milhas, "Veículo de Passeio");
-                        veiculos.add(passeio);
                     } else {
                         System.out.println("Opção inválida!");
                     }
@@ -85,7 +74,7 @@ public class Main {
                     System.out.println("Opção de menu inválida!");
                     break;
             }
-            input.close();
         } while (menu != 3);
+        input.close();
     }
 }

@@ -1,3 +1,10 @@
+/* 
+ * UNIVERSIDADE FEDERAL DO PAMPA - UNIPAMPA
+ * PROGRAMAÇÃO ORIENTADA A OBJETOS
+ * GABRIEL FREDES E GABRIEL DALMAZO
+ * TURMA EC11
+*/
+
 import java.util.Scanner;
 
 public class Main {

@@ -1,7 +1,16 @@
+/*
+ * UNIPAMPA
+ * Engenharia de Computação
+ * EC11
+ * Gabriel Fredes e Gabriel Dalmazo
+ * SP2
+*/
+
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
+    private static Turma turma;
     public static void novoAluno(Scanner input, Escola escola) {
         System.out.print("\nDigite o nome d@ alun@: ");
         String nome = input.nextLine();
@@ -49,7 +58,7 @@ public class Main {
                 LinkedList<Instrutor> temp;
                 temp = escola.buscarInstrutor(codInstrutor);
                 listaInstrutores.add(temp.get(0));
-                System.out.println("Instrutor(a)" + temp.get(0).getNome() + " adicionad@ com sucesso!\n");
+                System.out.println("Instrutor(a) " + temp.get(0).getNome() + " adicionad@ com sucesso!\n");
 
             } catch (Excecao_InstrutorNaoEncontrado e) {
                 System.out.println("Instrutor(a) não encontrado! Tente novamente.");
@@ -79,7 +88,7 @@ public class Main {
             System.out.print("\nDeseja informar outr@ alun@? (s/n): ");
         } while (input.nextLine().equals("s"));
 
-        Turma turma = new Turma(codTurma, dataIni, dataFim, listaInstrutores, listaAlunos);
+        turma = new Turma(codTurma, dataIni, dataFim, listaInstrutores, listaAlunos);
         escola.adicionarTurma(turma);
         System.out.println("Turma adicionada com sucesso!\n");
     }
@@ -170,6 +179,7 @@ public class Main {
                     break;
                 case 7:
                     escola.listarTurmas();
+                    turma.ordenarAlunosInstrutores();
                     break;
 
                 default:

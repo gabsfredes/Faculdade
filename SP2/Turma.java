@@ -7,7 +7,8 @@ public class Turma {
     private LinkedList<Aluno> listaAlunos;
     private LinkedList<Instrutor> listaInstrutores;
 
-    public Turma(long codTurma, String dataIni, String dataFim, LinkedList<Instrutor> listaInstrutores, LinkedList<Aluno> listaAlunos) {
+    public Turma(long codTurma, String dataIni, String dataFim, LinkedList<Instrutor> listaInstrutores,
+            LinkedList<Aluno> listaAlunos) {
         this.codTurma = codTurma;
         this.dataIni = dataIni;
         this.dataFim = dataFim;
@@ -27,27 +28,8 @@ public class Turma {
         return dataFim;
     }
 
-    public void ordenarAlunos() {
-        Aluno temp;
-        for (int i = 0; i < listaAlunos.size(); i++) {
-            for (int j = 0; j < listaAlunos.size() - 1; j++) {
-                if (listaAlunos.get(j).getNome().compareTo(listaAlunos.get(j + 1).getNome()) > 0) {
-                    temp = listaAlunos.get(j);
-                    listaAlunos.set(j, listaAlunos.get(j + 1));
-                    listaAlunos.set(j + 1, temp);
-                }
-            }
-        }
-    }
-    
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("\nTurma " + codTurma);
-        sb.append(" - " + dataIni);
-        sb.append(" à " + dataFim);
-
-
-        //sort instrutores by name
+    public void ordenarAlunosInstrutores() {
+        // sort instrutores by name
         Instrutor temp;
         for (int i = 0; i < listaInstrutores.size(); i++) {
             for (int j = 0; j < listaInstrutores.size() - 1; j++) {
@@ -59,13 +41,13 @@ public class Turma {
             }
         }
 
-        //print instrutores
-        sb.append("\nInstrutores:");
+        // print instrutores
+        System.out.println("Instrutores:");
         for (Instrutor inst : listaInstrutores) {
-            sb.append(" | " + inst.getNome() + " | ");
+            System.out.print(" | " + inst.getNome() + " | ");
         }
-        
-        //sort alunos by name
+
+        // sort alunos by name
         Aluno temp2;
         for (int i = 0; i < listaAlunos.size(); i++) {
             for (int j = 0; j < listaAlunos.size() - 1; j++) {
@@ -77,14 +59,37 @@ public class Turma {
             }
         }
 
-        //print alunos
-        sb.append("\nAlunos:");
+        // print alunos
+        System.out.println("\nAlunos:");
+        for (Aluno alu : listaAlunos) {
+            System.out.print(" | " + alu.getNome() + " | ");
+        }
+    }
+
+    public String umaTurma() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\nTurma " + codTurma);
+        sb.append(" - " + dataIni);
+        sb.append(" à " + dataFim);
+        sb.append("\nInstrutores");
+        for (Instrutor inst : listaInstrutores) {
+            sb.append(" | " + inst.getNome() + " | ");
+        }
+        sb.append("\nAlunos");
         for (Aluno alu : listaAlunos) {
             sb.append(" | " + alu.getNome() + " | ");
         }
         return sb.toString();
     }
 
-    
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\nTurma " + codTurma);
+        sb.append(" - " + dataIni);
+        sb.append(" à " + dataFim);
+        return sb.toString();
+    }
+
+
 
 }

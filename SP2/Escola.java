@@ -80,23 +80,6 @@ public class Escola {
         return temp;
     }
 
-     public void ordenarAlunos() {
-        Aluno temp;
-        for (int temporario = 0; temporario < listaAlunos.size(); temporario++) {
-            for (int daLista = 0; daLista < listaAlunos.size() - 1; daLista++) {
-                
-                String a1 = listaAlunos.get(daLista).getNome();
-                String a2 = listaAlunos.get(daLista + 1).getNome();
-
-                if (a1.compareTo(a2) > 0) {
-                    temp = listaAlunos.get(daLista);
-                    listaAlunos.set(daLista, listaAlunos.get(daLista + 1));
-                    listaAlunos.set(daLista + 1, temp);
-                }
-            }
-        }
-    }
-
     public void umaTurma(Turma turm) {
         System.out.println(turm);
     }

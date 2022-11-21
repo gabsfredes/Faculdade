@@ -169,8 +169,7 @@ public class Main {
                     }
                     break;
                 case 7:
-                    // call ordenarAlunos method from Turma class
-                    
+                    escola.listarTurmas();
                     break;
 
                 default:

@@ -45,13 +45,42 @@ public class Turma {
         sb.append("\nTurma " + codTurma);
         sb.append(" - " + dataIni);
         sb.append(" à " + dataFim);
-        sb.append("\nInstrutores: ");
+
+
+        //sort instrutores by name
+        Instrutor temp;
+        for (int i = 0; i < listaInstrutores.size(); i++) {
+            for (int j = 0; j < listaInstrutores.size() - 1; j++) {
+                if (listaInstrutores.get(j).getNome().compareTo(listaInstrutores.get(j + 1).getNome()) > 0) {
+                    temp = listaInstrutores.get(j);
+                    listaInstrutores.set(j, listaInstrutores.get(j + 1));
+                    listaInstrutores.set(j + 1, temp);
+                }
+            }
+        }
+
+        //print instrutores
+        sb.append("\nInstrutores:");
         for (Instrutor inst : listaInstrutores) {
             sb.append(" | " + inst.getNome() + " | ");
         }
-        sb.append("\nAlun@s: ");
-        for (Aluno al : listaAlunos) {
-            sb.append(" | " + al.getNome() + " | ");
+        
+        //sort alunos by name
+        Aluno temp2;
+        for (int i = 0; i < listaAlunos.size(); i++) {
+            for (int j = 0; j < listaAlunos.size() - 1; j++) {
+                if (listaAlunos.get(j).getNome().compareTo(listaAlunos.get(j + 1).getNome()) > 0) {
+                    temp2 = listaAlunos.get(j);
+                    listaAlunos.set(j, listaAlunos.get(j + 1));
+                    listaAlunos.set(j + 1, temp2);
+                }
+            }
+        }
+
+        //print alunos
+        sb.append("\nAlunos:");
+        for (Aluno alu : listaAlunos) {
+            sb.append(" | " + alu.getNome() + " | ");
         }
         return sb.toString();
     }

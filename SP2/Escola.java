@@ -105,19 +105,5 @@ public class Escola {
             System.out.println(turm);
         }
     }
-
-    public LinkedList<Instrutor> confereInstrutor(long codInstrutor) {
-        LinkedList<Instrutor> temp = new LinkedList<Instrutor>();
-
-        for (Instrutor inst : listaInstrutores) {
-            if (inst.getCodigo() == codInstrutor) {
-                temp.add(inst);
-            }
-        }
-
-        return temp;
-    }
-
-    
     
 }

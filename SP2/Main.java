@@ -11,8 +11,6 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
-    private static Turma turma;
-
     public static void novoAluno(Scanner input, Escola escola) {
         System.out.print("\nDigite o nome d@ alun@: ");
         String nome = input.nextLine();
@@ -72,11 +70,11 @@ public class Main {
                     System.out.print("Digite o código do instrutor(a): ");
                     long codInstrutor = input.nextLong();
                     input.nextLine();
-                    
+
                     LinkedList<Instrutor> temp;
                     temp = escola.buscarInstrutor(codInstrutor);
 
-                    if(listaInstrutores.contains(temp.get(0))) {
+                    if (listaInstrutores.contains(temp.get(0))) {
                         System.out.println("Este instrutor(a) já foi adicionado(a)!");
                     } else {
                         listaInstrutores.add(temp.get(0));
@@ -92,7 +90,7 @@ public class Main {
                 System.out.print("\nDeseja informar outro instrutor? (s/n): ");
             } while (input.nextLine().equals("s"));
 
-            // informa os alunos da turma 
+            // informa os alunos da turma
             System.out.println("\nInforme @s alun@s desta turma");
             LinkedList<Aluno> listaAlunos = new LinkedList<Aluno>();
 
@@ -123,21 +121,18 @@ public class Main {
                 System.out.print("\nDeseja informar outr@ alun@? (s/n): ");
             } while (input.nextLine().equals("s"));
 
-            turma = new Turma(codTurma, dataIni, dataFim, listaInstrutores, listaAlunos);
+            Turma turma = new Turma(codTurma, dataIni, dataFim, listaInstrutores, listaAlunos);
             escola.adicionarTurma(turma);
             System.out.println("Turma adicionada com sucesso!\n");
 
-        }catch(
+        } catch (
 
-    InputMismatchException e)
-    {
-        System.out.println("Ocorreu um erro! O código deve ser um número inteiro.");
-        input.nextLine();
-    }catch(
-    Excecao_TurmaExistente e)
-    {
-        System.out.println("Já existe uma turma com esse código.");
-    }
+        InputMismatchException e) {
+            System.out.println("Ocorreu um erro! O código deve ser um número inteiro.");
+            input.nextLine();
+        } catch (Excecao_TurmaExistente e) {
+            System.out.println("Já existe uma turma com esse código.");
+        }
     }
 
     public static void main(String[] args) {
@@ -232,7 +227,6 @@ public class Main {
                     break;
                 case 7:
                     escola.listarTurmas();
-                    turma.ordenarAlunosInstrutores();
                     break;
 
                 default:

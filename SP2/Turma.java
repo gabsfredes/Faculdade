@@ -42,7 +42,7 @@ public class Turma {
         }
 
         // print instrutores
-        System.out.println("Instrutores:");
+        System.out.print("Instrutores:");
         for (Instrutor inst : listaInstrutores) {
             System.out.print(" | " + inst.getNome() + " | ");
         }
@@ -60,7 +60,7 @@ public class Turma {
         }
 
         // print alunos
-        System.out.println("\nAlunos:");
+        System.out.print("\nAlunos:");
         for (Aluno alu : listaAlunos) {
             System.out.print(" | " + alu.getNome() + " | ");
         }

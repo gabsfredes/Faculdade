@@ -81,7 +81,7 @@ public class Escola {
     }
 
     public void umaTurma(Turma turm) {
-        System.out.println(turm);
+        System.out.println(turm.umaTurma());
     }
 
     public void listarTurmas() {

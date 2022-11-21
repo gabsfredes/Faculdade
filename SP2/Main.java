@@ -6,91 +6,117 @@
  * SP2
 */
 
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
     private static Turma turma;
+
     public static void novoAluno(Scanner input, Escola escola) {
         System.out.print("\nDigite o nome d@ alun@: ");
         String nome = input.nextLine();
-        System.out.print("Digite a matrícula d@ alun@: ");
-        long matricula = input.nextLong();
-        input.nextLine();
-        Aluno al = new Aluno(nome, matricula);
+        try {
+            System.out.print("Digite a matrícula d@ alun@: ");
+            long matricula = input.nextLong();
+            input.nextLine();
 
-        escola.adicionarAluno(al);
-        System.out.print("Alun@ adicionado com sucesso!\n");
+            Aluno al = new Aluno(nome, matricula);
+            escola.adicionarAluno(al);
+            System.out.print("Alun@ adicionado com sucesso!\n");
+        } catch (InputMismatchException e) {
+            System.out.println("Ocorreu um erro! A matrícula deve ser um número inteiro.");
+            input.nextLine();
+            return;
+        }
     }
 
     public static void novoInstrutor(Scanner input, Escola escola) {
         System.out.print("\nDigite o nome d@ instrutor(a): ");
         String nome = input.nextLine();
-        System.out.print("Digite o código d@ instrutor(a): ");
-        long codigo = input.nextLong();
-        input.nextLine();
-        Instrutor inst = new Instrutor(nome, codigo);
+        try {
+            System.out.print("Digite o código d@ instrutor(a): ");
+            long codigo = input.nextLong();
+            input.nextLine();
+            Instrutor inst = new Instrutor(nome, codigo);
 
-        escola.adicionarInstrutor(inst);
-        System.out.println("Instrutor(a) adicionad@ com sucesso!\n");
+            escola.adicionarInstrutor(inst);
+            System.out.println("Instrutor(a) adicionad@ com sucesso!\n");
+        } catch (InputMismatchException e) {
+            System.out.println("Ocorreu um erro! O código deve ser um número inteiro.");
+            input.nextLine();
+        }
     }
 
     public static void novaTurma(Scanner input, Escola escola) {
-        System.out.print("Digite o código da turma: ");
-        long codTurma = input.nextLong();
-        input.nextLine();
-        System.out.print("Digite a data de início da turma: ");
-        String dataIni = input.nextLine();
-        System.out.print("Digite a data de término da turma: ");
-        String dataFim = input.nextLine();
+        try {
+            System.out.print("Digite o código da turma: ");
+            long codTurma = input.nextLong();
+            input.nextLine();
 
-        // informa os instrutores da turma
-        System.out.println("\nInforme os instrutores(as) desta turma");
-        LinkedList<Instrutor> listaInstrutores = new LinkedList<Instrutor>();
+            System.out.print("Digite a data de início da turma: ");
+            String dataIni = input.nextLine();
+            System.out.print("Digite a data de término da turma: ");
+            String dataFim = input.nextLine();
 
-        // loopa até o usuario digitar que é o ultimo instrutor
-        do {
-            try {
-                System.out.print("Digite o código do instrutor(a): ");
-                long codInstrutor = input.nextLong();
-                input.nextLine();
+            // informa os instrutores da turma
+            System.out.println("\nInforme os instrutores(as) desta turma");
+            LinkedList<Instrutor> listaInstrutores = new LinkedList<Instrutor>();
 
-                LinkedList<Instrutor> temp;
-                temp = escola.buscarInstrutor(codInstrutor);
-                listaInstrutores.add(temp.get(0));
-                System.out.println("Instrutor(a) " + temp.get(0).getNome() + " adicionad@ com sucesso!\n");
+            // loopa até o usuario digitar que é o ultimo instrutor
+            do {
+                try {
+                    System.out.print("Digite o código do instrutor(a): ");
+                    long codInstrutor = input.nextLong();
+                    input.nextLine();
 
-            } catch (Excecao_InstrutorNaoEncontrado e) {
-                System.out.println("Instrutor(a) não encontrado! Tente novamente.");
-            }
-            System.out.print("\nDeseja informar outro instrutor? (s/n): ");
-        } while (input.nextLine().equals("s"));
+                    LinkedList<Instrutor> temp;
+                    temp = escola.buscarInstrutor(codInstrutor);
+                    listaInstrutores.add(temp.get(0));
+                    System.out.println("Instrutor(a) " + temp.get(0).getNome() + " adicionad@ com sucesso!\n");
 
-        // informa os alunos da turma
-        System.out.println("\nInforme @s alun@s desta turma");
-        LinkedList<Aluno> listaAlunos = new LinkedList<Aluno>();
+                } catch (Excecao_InstrutorNaoEncontrado e) {
+                    System.out.println("Instrutor(a) não encontrado! Tente novamente.");
+                } catch (InputMismatchException e) {
+                    System.out.println("Ocorreu um erro! O código deve ser um número inteiro.");
+                    input.nextLine();
+                }
+                System.out.print("\nDeseja informar outro instrutor? (s/n): ");
+            } while (input.nextLine().equals("s"));
 
-        // loopa até o usuario digitar que é o ultimo aluno
-        do {
-            try {
-                System.out.print("Digite a matrícula d@ alun@: ");
-                long matAluno = input.nextLong();
-                input.nextLine();
+            // informa os alunos da turma
+            System.out.println("\nInforme @s alun@s desta turma");
+            LinkedList<Aluno> listaAlunos = new LinkedList<Aluno>();
 
-                LinkedList<Aluno> temp;
-                temp = escola.buscarAluno(matAluno);
-                listaAlunos.add(temp.get(0));
-                System.out.println("Alun@ " + temp.get(0).getNome() + " adicionad@ com sucesso!\n");
+            // loopa até o usuario digitar que é o ultimo aluno
+            do {
+                try {
+                    System.out.print("Digite a matrícula d@ alun@: ");
+                    long matAluno = input.nextLong();
+                    input.nextLine();
 
-            } catch (Excecao_AlunoNaoEncontrado e) {
-                System.out.println("Alun@ não encontrad@! Tente novamente.");
-            }
-            System.out.print("\nDeseja informar outr@ alun@? (s/n): ");
-        } while (input.nextLine().equals("s"));
+                    LinkedList<Aluno> temp;
+                    temp = escola.buscarAluno(matAluno);
+                    listaAlunos.add(temp.get(0));
+                    System.out.println("Alun@ " + temp.get(0).getNome() + " adicionad@ com sucesso!\n");
 
-        turma = new Turma(codTurma, dataIni, dataFim, listaInstrutores, listaAlunos);
-        escola.adicionarTurma(turma);
-        System.out.println("Turma adicionada com sucesso!\n");
+                } catch (Excecao_AlunoNaoEncontrado e) {
+                    System.out.println("Alun@ não encontrad@! Tente novamente.");
+                } catch (InputMismatchException e) {
+                    System.out.println("Ocorreu um erro! A matrícula deve ser um número inteiro.");
+                    input.nextLine();
+                }
+                System.out.print("\nDeseja informar outr@ alun@? (s/n): ");
+            } while (input.nextLine().equals("s"));
+
+            turma = new Turma(codTurma, dataIni, dataFim, listaInstrutores, listaAlunos);
+            escola.adicionarTurma(turma);
+            System.out.println("Turma adicionada com sucesso!\n");
+
+        } catch (InputMismatchException e) {
+            System.out.println("Ocorreu um erro! O código deve ser um número inteiro.");
+            input.nextLine();
+        }
     }
 
     public static void main(String[] args) {
@@ -118,9 +144,15 @@ public class Main {
             System.out.print("\n7 - Ordenar e Listar turmas\n");
             System.out.println("8 - Sair");
             System.out.print("--------------------------------------------------\n");
-            System.out.print("Digite a opção desejada: ");
-            opcao = input.nextInt();
-            input.nextLine();
+
+            try {
+                System.out.print("Digite a opção desejada: ");
+                opcao = input.nextInt();
+                input.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Ops! Ocorreu um erro, você precisa inserir um número inteiro neste campo.");
+                input.nextLine();
+            }
 
             switch (opcao) {
                 case 1:

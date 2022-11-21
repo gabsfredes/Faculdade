@@ -14,4 +14,14 @@ public class Curso {
         return codCurso;
     }
 
+    public String getNomeCurso() {
+        return nome;
+    }
+
+    public int getCargaHoraria() {
+        return cargaHoraria;
+    }
+
+    
+
 }

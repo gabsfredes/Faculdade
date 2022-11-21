@@ -54,9 +54,12 @@ public class Main {
             long codTurma = input.nextLong();
             input.nextLine();
 
-            System.out.print("Digite a data de início da turma: ");
+            // confere se já existe uma turma com o código digitado
+            escola.confereTurma(codTurma);
+
+            System.out.print("Digite a data de início da turma (xx/xx/xxxx): ");
             String dataIni = input.nextLine();
-            System.out.print("Digite a data de término da turma: ");
+            System.out.print("Digite a data de término da turma (xx/xx/xxxx): ");
             String dataFim = input.nextLine();
 
             // informa os instrutores da turma
@@ -69,10 +72,15 @@ public class Main {
                     System.out.print("Digite o código do instrutor(a): ");
                     long codInstrutor = input.nextLong();
                     input.nextLine();
-
+                    
                     LinkedList<Instrutor> temp;
                     temp = escola.buscarInstrutor(codInstrutor);
-                    listaInstrutores.add(temp.get(0));
+
+                    if(listaInstrutores.contains(temp.get(0))) {
+                        System.out.println("Este instrutor(a) já foi adicionado(a)!");
+                    } else {
+                        listaInstrutores.add(temp.get(0));
+                    }
                     System.out.println("Instrutor(a) " + temp.get(0).getNome() + " adicionad@ com sucesso!\n");
 
                 } catch (Excecao_InstrutorNaoEncontrado e) {
@@ -84,7 +92,7 @@ public class Main {
                 System.out.print("\nDeseja informar outro instrutor? (s/n): ");
             } while (input.nextLine().equals("s"));
 
-            // informa os alunos da turma
+            // informa os alunos da turma 
             System.out.println("\nInforme @s alun@s desta turma");
             LinkedList<Aluno> listaAlunos = new LinkedList<Aluno>();
 
@@ -97,8 +105,14 @@ public class Main {
 
                     LinkedList<Aluno> temp;
                     temp = escola.buscarAluno(matAluno);
-                    listaAlunos.add(temp.get(0));
-                    System.out.println("Alun@ " + temp.get(0).getNome() + " adicionad@ com sucesso!\n");
+
+                    // confere se já está na lista
+                    if (listaAlunos.contains(temp.get(0))) {
+                        System.out.println("Alun@ " + temp.get(0).getNome() + " já está na lista!");
+                    } else {
+                        listaAlunos.add(temp.get(0));
+                        System.out.println("Alun@ " + temp.get(0).getNome() + " adicionad@ com sucesso!\n");
+                    }
 
                 } catch (Excecao_AlunoNaoEncontrado e) {
                     System.out.println("Alun@ não encontrad@! Tente novamente.");
@@ -113,10 +127,17 @@ public class Main {
             escola.adicionarTurma(turma);
             System.out.println("Turma adicionada com sucesso!\n");
 
-        } catch (InputMismatchException e) {
-            System.out.println("Ocorreu um erro! O código deve ser um número inteiro.");
-            input.nextLine();
-        }
+        }catch(
+
+    InputMismatchException e)
+    {
+        System.out.println("Ocorreu um erro! O código deve ser um número inteiro.");
+        input.nextLine();
+    }catch(
+    Excecao_TurmaExistente e)
+    {
+        System.out.println("Já existe uma turma com esse código.");
+    }
     }
 
     public static void main(String[] args) {

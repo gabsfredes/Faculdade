@@ -71,11 +71,11 @@ public class Turma {
         sb.append("\nTurma " + codTurma);
         sb.append(" - " + dataIni);
         sb.append(" à " + dataFim);
-        sb.append("\nInstrutores");
+        sb.append("\nInstrutores:");
         for (Instrutor inst : listaInstrutores) {
             sb.append(" | " + inst.getNome() + " | ");
         }
-        sb.append("\nAlunos");
+        sb.append("\nAlunos:");
         for (Aluno alu : listaAlunos) {
             sb.append(" | " + alu.getNome() + " | ");
         }

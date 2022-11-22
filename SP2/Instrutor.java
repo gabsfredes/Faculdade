@@ -1,3 +1,11 @@
+/*
+ * UNIPAMPA
+ * Engenharia de Computação
+ * EC11
+ * Gabriel Fredes e Gabriel Dalmazo
+ * ASP2
+*/
+
 public class Instrutor extends Pessoa{
     private long codigo;
 

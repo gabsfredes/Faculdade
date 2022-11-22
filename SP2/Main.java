@@ -3,7 +3,7 @@
  * Engenharia de Computação
  * EC11
  * Gabriel Fredes e Gabriel Dalmazo
- * SP2
+ * ASP2
 */
 
 import java.util.InputMismatchException;

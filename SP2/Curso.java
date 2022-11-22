@@ -2,7 +2,6 @@ public class Curso {
     private String nome;
     private long codCurso;
     private int cargaHoraria;
-    private Turma turm;
 
     public Curso(String nome, long codCurso, int cargaHoraria) {
         this.nome = nome;
@@ -22,6 +21,7 @@ public class Curso {
         return cargaHoraria;
     }
 
-    
-
+    public String toString() {
+        return "\nCurso: " + nome + " (" + codCurso + ") - " + cargaHoraria + " Horas";
+    }
 }

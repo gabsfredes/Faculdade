@@ -3,6 +3,7 @@ import java.util.LinkedList;
 public class Escola {
     private String nome;
     private String telefone;
+    private LinkedList<Curso> listaCursos;
     private LinkedList<Aluno> listaAlunos;
     private LinkedList<Instrutor> listaInstrutores;
     private LinkedList<Turma> listaTurma;
@@ -10,6 +11,7 @@ public class Escola {
     public Escola(String nome, String telefone) {
         this.nome = nome;
         this.telefone = telefone;
+        listaCursos = new LinkedList<Curso>();
         listaAlunos = new LinkedList<Aluno>();
         listaInstrutores = new LinkedList<Instrutor>();
         listaTurma = new LinkedList<Turma>();
@@ -25,6 +27,23 @@ public class Escola {
 
     public void adicionarAluno(Aluno al) {
         listaAlunos.add(al);
+    }
+
+    public void adicionaCurso(Curso c) {
+        listaCursos.add(c);
+    }
+
+    public LinkedList<Curso> buscarCurso(long codCurso) throws Excecao_CursoNaoEncontrado {
+        LinkedList<Curso> listaCursosEncontrados = new LinkedList<Curso>();
+        for (Curso c : listaCursos) {
+            if (c.getCodCurso() == codCurso) {
+                listaCursosEncontrados.add(c);
+            }
+        }
+        if (listaCursosEncontrados.size() == 0) {
+            throw new Excecao_CursoNaoEncontrado();
+        }
+        return listaCursosEncontrados;
     }
 
     public LinkedList<Aluno> buscarAluno(long matAluno) throws Excecao_AlunoNaoEncontrado {
@@ -99,11 +118,15 @@ public class Escola {
         System.out.println(turm.umaTurma());
     }
 
+    public void umCurso(Curso c) {
+        System.out.println(c);
+    }
+
     public void listarTurmas() {
         System.out.println("\nLista de Turmas:");
         for (Turma turm : listaTurma) {
             System.out.println(turm);
         }
     }
-    
+
 }

@@ -4,14 +4,15 @@ public class Turma {
     private long codTurma;
     private String dataIni;
     private String dataFim;
+    private LinkedList<Curso> listaCurso;
     private LinkedList<Aluno> listaAlunos;
     private LinkedList<Instrutor> listaInstrutores;
 
-    public Turma(long codTurma, String dataIni, String dataFim, LinkedList<Instrutor> listaInstrutores,
-            LinkedList<Aluno> listaAlunos) {
+    public Turma(long codTurma, String dataIni, String dataFim, LinkedList<Curso> listaCurso, LinkedList<Aluno> listaAlunos, LinkedList<Instrutor> listaInstrutores) {
         this.codTurma = codTurma;
         this.dataIni = dataIni;
         this.dataFim = dataFim;
+        this.listaCurso = listaCurso;
         this.listaAlunos = listaAlunos;
         this.listaInstrutores = listaInstrutores;
     }
@@ -31,8 +32,10 @@ public class Turma {
     public String umaTurma() {
         StringBuilder sb = new StringBuilder();
         sb.append("\nTurma " + codTurma);
-        sb.append(" - " + dataIni);
-        sb.append(" à " + dataFim);
+        for (Curso c : listaCurso) {
+            sb.append(c);
+        }
+        sb.append("\nDuração de " + dataIni + " até " + dataFim);
         sb.append("\nInstrutores:");
         for (Instrutor inst : listaInstrutores) {
             sb.append(" | " + inst.getNome() + " | ");
@@ -47,8 +50,10 @@ public class Turma {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("\nTurma " + codTurma);
-        sb.append(" - " + dataIni);
-        sb.append(" à " + dataFim);
+        for (Curso c : listaCurso) {
+            sb.append(c);
+        }
+        sb.append("\nDuração de " + dataIni + " até " + dataFim);
         // sort instrutores by name
         Instrutor temp;
         for (int i = 0; i < listaInstrutores.size(); i++) {
